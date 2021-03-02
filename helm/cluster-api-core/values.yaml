@@ -4,6 +4,10 @@ image:
   name: k8s-artifacts-prod/cluster-api/cluster-api-controller
   tag: v0.3.14
 
+featuregates:
+  machinepool: false
+  clusterresourceset: false
+
 project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
