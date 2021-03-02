@@ -3,4 +3,4 @@ name: cluster-api-core
 description: "Helm chart for cluster api core."
 home: "https://github.com/giantswarm/cluster-api-core-app"
 version: "[[ .Version ]]"
-appVersion: "0.3.14"
+appVersion: "[[ .AppVersion ]]"
