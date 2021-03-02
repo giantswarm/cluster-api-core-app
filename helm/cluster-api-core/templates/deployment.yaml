@@ -12,6 +12,8 @@ spec:
       {{- include "labels.selector" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        releaseRevision: {{ .Release.Revision | quote }}
       labels:
         {{- include "labels.common" . | nindent 8 }}
     spec:
