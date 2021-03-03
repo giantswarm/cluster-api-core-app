@@ -14,3 +14,6 @@ workflows:
           app_catalog: "control-plane-test-catalog"
           app_catalog_test: "control-plane-test-catalog"
           chart: "cluster-api-core"
+          filters:
+            tags:
+              only: /^v.*/
