@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "resource.default.name" . }}
+  namespace: {{ include "resource.default.namespace" . }}
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "labels.selector" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        releaseRevision: {{ .Release.Revision | quote }}
+      labels:
+        {{- include "labels.common" . | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - --secure-listen-address=0.0.0.0:8443
+        - --upstream=http://127.0.0.1:8080/
+        - --logtostderr=true
+        - --v=10
+        image: gcr.io/kubebuilder/kube-rbac-proxy:v0.4.1
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 8443
+          name: https
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - args:
+        - --metrics-addr=127.0.0.1:8080
+        - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},ClusterResourceSet={{ .Values.featuregates.clusterresourceset }}
+        command:
+        - /manager
+        image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: healthz
+            scheme: HTTP
+        name: manager
+        ports:
+        - containerPort: 9440
+          name: healthz
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: healthz
+            scheme: HTTP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      serviceAccountName: {{ include "resource.default.name"  . }}
+      restartPolicy: Always
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
