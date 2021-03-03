@@ -10,5 +10,5 @@ roleRef:
   name: {{ include "resource.default.name" . }}
 subjects:
 - kind: ServiceAccount
-  name: default
+  name: {{ include "resource.default.name" . }}
   namespace: {{ include "resource.default.namespace" . }}
