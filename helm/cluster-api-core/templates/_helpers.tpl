@@ -27,4 +27,5 @@ Selector labels
 {{- define "labels.selector" -}}
 app.kubernetes.io/name: {{ include "name" . | quote }}
 app.kubernetes.io/instance: {{ .Release.Name | quote }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end -}}
