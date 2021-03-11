@@ -5,7 +5,7 @@ image:
   tag: v0.3.14
 
 featuregates:
-  machinepool: false
+  machinepool: true
   clusterresourceset: false
 
 project:
