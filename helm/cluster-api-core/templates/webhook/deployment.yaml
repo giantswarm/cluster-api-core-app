@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "labels.selector" . | nindent 8 }}
+        {{- include "labels.common" . | nindent 8 }}
     spec:
       containers:
       - args:
@@ -32,7 +32,7 @@ spec:
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},ClusterResourceSet={{ .Values.featuregates.clusterresourceset }}
         command:
         - /manager
-        image: us.gcr.io/k8s-artifacts-prod/cluster-api/cluster-api-controller:v0.3.14
+        image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
