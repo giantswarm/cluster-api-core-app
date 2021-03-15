@@ -3,12 +3,12 @@ kind: Service
 metadata:
   labels:
     {{- include "labels.common" . | nindent 4 }}
-  name: {{ include "resource.default.name" . }}-webhook
+  name: {{ include "resource.webhook.name" . }}
   namespace: {{ include "resource.default.namespace" . }}
 spec:
   ports:
-  - name: https
-    port: 8443
-    targetPort: https
+  - name: webhook
+    port: {{ .Values.port.webhook }}
+    targetPort: webhook
   selector:
     {{- include "labels.selector" . | nindent 4 }}

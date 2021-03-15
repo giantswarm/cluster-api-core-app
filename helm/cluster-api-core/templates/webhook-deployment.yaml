@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "resource.default.name" . }}
+  name: {{ include "resource.webhook.name" . }}
   namespace: {{ include "resource.default.namespace" . }}
   labels:
     {{- include "labels.common" . | nindent 4 }}
@@ -19,20 +19,8 @@ spec:
     spec:
       containers:
       - args:
-        - --secure-listen-address=0.0.0.0:{{ .Values.port.rbac-proxy }}
-        - --upstream=http://127.0.0.1:{{ .Values.port.metrics }}/
-        - --logtostderr=true
-        image: "{{ .Values.images.kube-rbac-proxy.registry }}/{{ .Values.images.kube-rbac-proxy.name }}:{{ .Values.images.kube-rbac-proxy.tag }}"
-        imagePullPolicy: IfNotPresent
-        name: kube-rbac-proxy
-        ports:
-        - containerPort: {{ .Values.port.rbac-proxy }}
-          name: https
-          protocol: TCP
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      - args:
         - --metrics-addr=127.0.0.1:{{ .Values.port.metrics }}
+        - --webhook-port={{ .Values.port.webhook }}
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},ClusterResourceSet={{ .Values.featuregates.clusterresourceset }}
         command:
         - /manager
@@ -47,6 +35,9 @@ spec:
         - containerPort: {{ .Values.port.healthz }}
           name: healthz
           protocol: TCP
+        - containerPort: {{ .Values.port.webhook }}
+          name: webhook
+          protocol: TCP
         readinessProbe:
           httpGet:
             path: /readyz
@@ -54,9 +45,18 @@ spec:
             scheme: HTTP
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
       dnsPolicy: ClusterFirst
-      serviceAccountName: {{ include "resource.default.name"  . }}
+      serviceAccountName: {{ include "resource.webhook.name"  . }}
       restartPolicy: Always
       tolerations:
       - effect: NoSchedule
         key: node-role.kubernetes.io/master
+      volumes:
+        - name: cert
+          secret:
+            defaultMode: 420
+            secretName: cluster-api-core-webhook-cert

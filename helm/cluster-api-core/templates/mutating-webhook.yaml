@@ -2,16 +2,16 @@ apiVersion: admissionregistration.k8s.io/v1beta1
 kind: MutatingWebhookConfiguration
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: {{ include "resource.default.namespace" . }}/{{ include "resource.default.name" . }}-webhook
+    cert-manager.io/inject-ca-from: {{ include "resource.default.namespace" . }}/{{ include "resource.webhook.name" . }}
   creationTimestamp: null
   labels:
     {{- include "labels.common" . | nindent 4 }}
-  name: {{ include "resource.default.name" . }}
+  name: {{ include "resource.webhook.name" . }}
 webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-cluster
   failurePolicy: Fail
@@ -31,7 +31,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-machine
   failurePolicy: Fail
@@ -51,7 +51,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-machinedeployment
   failurePolicy: Fail
@@ -71,7 +71,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-machinehealthcheck
   failurePolicy: Fail
@@ -91,7 +91,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-machineset
   failurePolicy: Fail
@@ -111,7 +111,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-exp-cluster-x-k8s-io-v1alpha3-machinepool
   failurePolicy: Fail
@@ -131,7 +131,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.default.name" . }}-webhook
+      name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-addons-cluster-x-k8s-io-v1alpha3-clusterresourceset
   failurePolicy: Fail
