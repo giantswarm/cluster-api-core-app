@@ -10,5 +10,8 @@ spec:
   - name: webhook
     port: {{ .Values.ports.webhook }}
     targetPort: webhook
+  - name: metrics
+    port: {{ .Values.ports.proxy }}
+    targetPort: metrics
   selector:
     {{- include "labels.selector" . | nindent 4 }}
