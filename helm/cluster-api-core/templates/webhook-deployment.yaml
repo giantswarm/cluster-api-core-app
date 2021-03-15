@@ -19,8 +19,8 @@ spec:
     spec:
       containers:
       - args:
-        - --metrics-addr=127.0.0.1:{{ .values.ports.metrics }}
-        - --webhook-port={{ .values.ports.webhook }}
+        - --metrics-addr=127.0.0.1:{{ .Values.ports.metrics }}
+        - --webhook-port={{ .Values.ports.webhook }}
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},ClusterResourceSet={{ .Values.featuregates.clusterresourceset }}
         command:
         - /manager
@@ -32,10 +32,10 @@ spec:
             scheme: HTTP
         name: manager
         ports:
-        - containerPort: {{ .values.ports.healthz }}
+        - containerPort: {{ .Values.ports.healthz }}
           name: healthz
           protocol: TCP
-        - containerPort: {{ .values.ports.webhook }}
+        - containerPort: {{ .Values.ports.webhook }}
           name: webhook
           protocol: TCP
         readinessProbe:

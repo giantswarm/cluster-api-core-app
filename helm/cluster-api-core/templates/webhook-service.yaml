@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
   - name: webhook
-    port: {{ .values.ports.webhook }}
+    port: {{ .Values.ports.webhook }}
     targetPort: webhook
   selector:
     {{- include "labels.selector" . | nindent 4 }}

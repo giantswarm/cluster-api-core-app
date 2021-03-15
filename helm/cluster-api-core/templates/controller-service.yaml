@@ -11,7 +11,7 @@ metadata:
 spec:
   ports:
   - name: https
-    port: {{ .values.ports.proxy }}
+    port: {{ .Values.ports.proxy }}
     targetPort: https
   selector:
     {{- include "labels.selector" . | nindent 4 }}
