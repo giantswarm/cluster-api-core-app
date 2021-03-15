@@ -2,7 +2,7 @@ name: cluster-api-core
 image:
   registry: quay.io
   name: giantswarm/cluster-api-controller
-  tag: 0cece0b23afabd4918d1f619e7557c8221a1ed24
+  tag: cc399f285ce913b7bdbd85d217bdb407c84984ef
 
 featuregates:
   machinepool: true
