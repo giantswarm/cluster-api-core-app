@@ -14,6 +14,7 @@ webhooks:
       name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-cluster
+      port: {{ .Values.ports.webhook }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.cluster.cluster.x-k8s.io
@@ -34,6 +35,7 @@ webhooks:
       name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-machine
+      port: {{ .Values.ports.webhook }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.machine.cluster.x-k8s.io
@@ -54,6 +56,7 @@ webhooks:
       name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-machinedeployment
+      port: {{ .Values.ports.webhook }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.machinedeployment.cluster.x-k8s.io
@@ -74,6 +77,7 @@ webhooks:
       name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-machinehealthcheck
+      port: {{ .Values.ports.webhook }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.machinehealthcheck.cluster.x-k8s.io
@@ -94,6 +98,7 @@ webhooks:
       name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-cluster-x-k8s-io-v1alpha3-machineset
+      port: {{ .Values.ports.webhook }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.machineset.cluster.x-k8s.io
@@ -114,6 +119,7 @@ webhooks:
       name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-exp-cluster-x-k8s-io-v1alpha3-machinepool
+      port: {{ .Values.ports.webhook }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.exp.machinepool.cluster.x-k8s.io
@@ -134,6 +140,7 @@ webhooks:
       name: {{ include "resource.webhook.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /mutate-addons-cluster-x-k8s-io-v1alpha3-clusterresourceset
+      port: {{ .Values.ports.webhook }}
   failurePolicy: Fail
   matchPolicy: Equivalent
   name: default.clusterresourceset.addons.cluster.x-k8s.io

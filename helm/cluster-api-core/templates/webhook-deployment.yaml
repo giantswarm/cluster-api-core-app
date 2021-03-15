@@ -59,4 +59,4 @@ spec:
         - name: cert
           secret:
             defaultMode: 420
-            secretName: cluster-api-core-webhook-cert
+            secretName: cluster-api-core-webhook
