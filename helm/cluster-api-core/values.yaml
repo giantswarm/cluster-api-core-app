@@ -11,7 +11,7 @@ images:
     tag: v0.4.1
 
 featuregates:
-  machinepool: false
+  machinepool: true
   clusterresourceset: false
 
 ports:

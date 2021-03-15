@@ -25,6 +25,7 @@ spec:
         command:
         - /manager
         image: "{{ .Values.images.controller.registry }}/{{ .Values.images.controller.name }}:{{ .Values.images.controller.tag }}"
+        imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
             path: /healthz
