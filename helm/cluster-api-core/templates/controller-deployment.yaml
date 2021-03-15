@@ -19,20 +19,20 @@ spec:
     spec:
       containers:
       - args:
-        - --secure-listen-address=0.0.0.0:{{ .Values.port.proxy }}
-        - --upstream=http://127.0.0.1:{{ .Values.port.metrics }}/
+        - --secure-listen-address=0.0.0.0:{{ .values.ports.proxy }}
+        - --upstream=http://127.0.0.1:{{ .values.ports.metrics }}/
         - --logtostderr=true
         image: "{{ .Values.images.proxy.registry }}/{{ .Values.images.proxy.name }}:{{ .Values.images.proxy.tag }}"
         imagePullPolicy: IfNotPresent
         name: kube-rbac-proxy
         ports:
-        - containerPort: {{ .Values.port.proxy }}
+        - containerPort: {{ .values.ports.proxy }}
           name: https
           protocol: TCP
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       - args:
-        - --metrics-addr=127.0.0.1:{{ .Values.port.metrics }}
+        - --metrics-addr=127.0.0.1:{{ .values.ports.metrics }}
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},ClusterResourceSet={{ .Values.featuregates.clusterresourceset }}
         command:
         - /manager
@@ -44,7 +44,7 @@ spec:
             scheme: HTTP
         name: manager
         ports:
-        - containerPort: {{ .Values.port.healthz }}
+        - containerPort: {{ .values.ports.healthz }}
           name: healthz
           protocol: TCP
         readinessProbe:
