@@ -60,4 +60,4 @@ spec:
         - name: cert
           secret:
             defaultMode: 420
-            secretName: cluster-api-core-webhook
+            secretName: {{ include "resource.webhook.name"  . }}
