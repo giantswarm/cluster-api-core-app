@@ -1,12 +1,24 @@
 name: cluster-api-core
-image:
-  registry: us.gcr.io
-  name: k8s-artifacts-prod/cluster-api/cluster-api-controller
-  tag: v0.3.14
+
+images:
+  controller:
+    registry: us.gcr.io
+    name: k8s-artifacts-prod/cluster-api/cluster-api-controller
+    tag: v0.3.14
+  proxy:
+    registry: us.gcr.io
+    name: kubebuilder/kube-rbac-proxy
+    tag: v0.4.1
 
 featuregates:
   machinepool: true
   clusterresourceset: false
+
+ports:
+  proxy: 8443
+  healthz: 9440
+  metrics: 8080
+  webhook: 9443
 
 project:
   branch: "[[ .Branch ]]"
