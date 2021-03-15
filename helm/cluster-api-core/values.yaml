@@ -5,7 +5,7 @@ images:
     registry: us.gcr.io
     name: k8s-artifacts-prod/cluster-api/cluster-api-controller
     tag: v0.3.14
-  kube-rbac-proxy:
+  proxy:
     registry: us.gcr.io
     name: kubebuilder/kube-rbac-proxy
     tag: v0.4.1
@@ -15,7 +15,7 @@ featuregates:
   clusterresourceset: false
 
 ports:
-  rbac-proxy: 8443
+  proxy: 8443
   healthz: 9440
   metrics: 8080
   webhook: 9443

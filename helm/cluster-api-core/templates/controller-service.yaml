@@ -11,7 +11,7 @@ metadata:
 spec:
   ports:
   - name: https
-    port: {{ .Values.port.rbac-proxy }}
+    port: {{ .Values.port.proxy }}
     targetPort: https
   selector:
     {{- include "labels.selector" . | nindent 4 }}

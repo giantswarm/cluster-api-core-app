@@ -19,14 +19,14 @@ spec:
     spec:
       containers:
       - args:
-        - --secure-listen-address=0.0.0.0:{{ .Values.port.rbac-proxy }}
+        - --secure-listen-address=0.0.0.0:{{ .Values.port.proxy }}
         - --upstream=http://127.0.0.1:{{ .Values.port.metrics }}/
         - --logtostderr=true
-        image: "{{ .Values.images.kube-rbac-proxy.registry }}/{{ .Values.images.kube-rbac-proxy.name }}:{{ .Values.images.kube-rbac-proxy.tag }}"
+        image: "{{ .Values.images.proxy.registry }}/{{ .Values.images.proxy.name }}:{{ .Values.images.proxy.tag }}"
         imagePullPolicy: IfNotPresent
         name: kube-rbac-proxy
         ports:
-        - containerPort: {{ .Values.port.rbac-proxy }}
+        - containerPort: {{ .Values.port.proxy }}
           name: https
           protocol: TCP
         terminationMessagePath: /dev/termination-log
