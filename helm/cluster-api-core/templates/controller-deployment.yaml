@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "resource.default.name" . }}
+  namespace: {{ include "resource.default.namespace" . }}
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "labels.selector" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        releaseRevision: {{ .Release.Revision | quote }}
+      labels:
+        {{- include "labels.common" . | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - --secure-listen-address=0.0.0.0:{{ .Values.ports.proxy }}
+        - --upstream=http://127.0.0.1:{{ .Values.ports.metrics }}/
+        - --logtostderr=true
+        image: "{{ .Values.images.proxy.registry }}/{{ .Values.images.proxy.name }}:{{ .Values.images.proxy.tag }}"
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: {{ .Values.ports.proxy }}
+          name: https
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - args:
+        - --metrics-addr=127.0.0.1:{{ .Values.ports.metrics }}
+        - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},ClusterResourceSet={{ .Values.featuregates.clusterresourceset }}
+        - --watch-filter=0.0.1
+        command:
+        - /manager
+        image: "{{ .Values.images.controller.registry }}/{{ .Values.images.controller.name }}:{{ .Values.images.controller.tag }}"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: healthz
+            scheme: HTTP
+        name: manager
+        ports:
+        - containerPort: {{ .Values.ports.healthz }}
+          name: healthz
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: healthz
+            scheme: HTTP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      serviceAccountName: {{ include "resource.default.name"  . }}
+      restartPolicy: Always
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master

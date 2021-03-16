@@ -1,12 +1,24 @@
 name: cluster-api-core
-image:
-  registry: quay.io
-  name: giantswarm/cluster-api-controller
-  tag: 7c147a93ef43d5ffa0070c77c37da1fed456f000
+
+images:
+  controller:
+    registry: quay.io
+    name: giantswarm/cluster-api-controller
+    tag: 7c147a93ef43d5ffa0070c77c37da1fed456f000
+  proxy:
+    registry: us.gcr.io
+    name: kubebuilder/kube-rbac-proxy
+    tag: v0.4.1
 
 featuregates:
   machinepool: true
   clusterresourceset: false
+
+ports:
+  proxy: 8443
+  healthz: 9440
+  metrics: 8080
+  webhook: 9443
 
 project:
   branch: "[[ .Branch ]]"
