@@ -6,7 +6,7 @@ images:
     name: giantswarm/cluster-api-controller
     tag: 7c147a93ef43d5ffa0070c77c37da1fed456f000
   proxy:
-    registry: us.gcr.io
+    registry: gcr.io
     name: kubebuilder/kube-rbac-proxy
     tag: v0.4.1
 
