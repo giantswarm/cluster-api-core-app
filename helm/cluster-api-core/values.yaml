@@ -6,9 +6,9 @@ images:
     name: k8s-artifacts-prod/cluster-api/cluster-api-controller
     tag: v0.3.14
   proxy:
-    registry: us.gcr.io
+    registry: gcr.io
     name: kubebuilder/kube-rbac-proxy
-    tag: v0.4.1
+    tag: v0.8.0
 
 featuregates:
   machinepool: true
