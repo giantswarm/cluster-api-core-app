@@ -12,7 +12,7 @@ images:
 
 featuregates:
   machinepool: true
-  clusterresourceset: false
+  clusterresourceset: true
 
 ports:
   proxy: 8443
