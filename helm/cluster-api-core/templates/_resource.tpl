@@ -31,5 +31,5 @@ giantswarm
 {{- end -}}
 
 {{- define "resource.app.version" -}}
-{{- .Chart.Version | trunc 12 | trimSuffix "-" -}}
+{{- .Chart.Version | replace "." "-"| trunc 12 | trimSuffix "-"| replace "-" "." -}}
 {{- end -}}
