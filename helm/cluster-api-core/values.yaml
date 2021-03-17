@@ -2,9 +2,9 @@ name: cluster-api-core
 
 images:
   controller:
-    registry: us.gcr.io
-    name: k8s-artifacts-prod/cluster-api/cluster-api-controller
-    tag: v0.3.14
+    registry: quay.io
+    name: giantswarm/cluster-api-controller
+    tag: 7c147a93ef43d5ffa0070c77c37da1fed456f000
   proxy:
     registry: gcr.io
     name: kubebuilder/kube-rbac-proxy
