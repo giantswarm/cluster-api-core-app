@@ -29,3 +29,7 @@ giantswarm
 {{- define "resource.webhook.name" -}}
 {{- include "resource.default.name" . -}}-webhook
 {{- end -}}
+
+{{- define "resource.app.version" -}}
+{{- .Chart.Version | trimSuffix "-" -}}
+{{- end -}}

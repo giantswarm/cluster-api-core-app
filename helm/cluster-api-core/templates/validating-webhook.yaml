@@ -20,7 +20,7 @@ webhooks:
   name: validation.cluster.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ .Chart.Version }}
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - cluster.x-k8s.io
@@ -44,7 +44,7 @@ webhooks:
   name: validation.machine.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ .Chart.Version }}
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - cluster.x-k8s.io
@@ -68,7 +68,7 @@ webhooks:
   name: validation.machinedeployment.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ .Chart.Version }}
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - cluster.x-k8s.io
@@ -92,7 +92,7 @@ webhooks:
   name: validation.machinehealthcheck.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ .Chart.Version }}
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - cluster.x-k8s.io
@@ -116,7 +116,7 @@ webhooks:
   name: validation.machineset.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ .Chart.Version }}
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - cluster.x-k8s.io
@@ -140,7 +140,7 @@ webhooks:
   name: validation.exp.machinepool.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ .Chart.Version }}
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - exp.cluster.x-k8s.io
@@ -164,7 +164,7 @@ webhooks:
   name: validation.clusterresourceset.addons.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ .Chart.Version }}
+      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
   rules:
   - apiGroups:
     - addons.cluster.x-k8s.io
