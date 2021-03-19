@@ -32,6 +32,7 @@ webhooks:
     resources:
     - clusters
   sideEffects: None
+  reinvocationPolicy: IfNeeded
 - clientConfig:
     caBundle: Cg==
     service:
@@ -56,6 +57,7 @@ webhooks:
     resources:
     - machines
   sideEffects: None
+  reinvocationPolicy: IfNeeded
 - clientConfig:
     caBundle: Cg==
     service:
@@ -80,6 +82,7 @@ webhooks:
     resources:
     - machinedeployments
   sideEffects: None
+  reinvocationPolicy: IfNeeded
 - clientConfig:
     caBundle: Cg==
     service:
@@ -104,6 +107,7 @@ webhooks:
     resources:
     - machinehealthchecks
   sideEffects: None
+  reinvocationPolicy: IfNeeded
 - clientConfig:
     caBundle: Cg==
     service:
@@ -128,6 +132,7 @@ webhooks:
     resources:
     - machinesets
   sideEffects: None
+  reinvocationPolicy: IfNeeded
 - clientConfig:
     caBundle: Cg==
     service:
@@ -152,6 +157,7 @@ webhooks:
     resources:
     - machinepools
   sideEffects: None
+  reinvocationPolicy: IfNeeded
 - clientConfig:
     caBundle: Cg==
     service:
@@ -176,3 +182,4 @@ webhooks:
     resources:
     - clusterresourcesets
   sideEffects: None
+  reinvocationPolicy: IfNeeded
