@@ -10,6 +10,8 @@ images:
     name: kubebuilder/kube-rbac-proxy
     tag: v0.8.0
 
+crdConvertOnly: true
+
 featuregates:
   machinepool: true
   clusterresourceset: true
