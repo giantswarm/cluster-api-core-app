@@ -4,7 +4,7 @@ images:
   controller:
     registry: quay.io
     name: giantswarm/cluster-api-controller
-    tag: 7c147a93ef43d5ffa0070c77c37da1fed456f000
+    tag: c39dc00632b621b18df7ec4ec0c73ec6bc6736ec
   proxy:
     registry: gcr.io
     name: kubebuilder/kube-rbac-proxy
