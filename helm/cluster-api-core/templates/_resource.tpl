@@ -33,3 +33,7 @@ giantswarm
 {{- define "resource.app.version" -}}
 0.0.2
 {{- end -}}
+
+{{- define "resource.app.unique" -}}
+{{- if hasSuffix "-unique" .Release.Name }}true{{ else }}false{{ end }}
+{{- end -}}
