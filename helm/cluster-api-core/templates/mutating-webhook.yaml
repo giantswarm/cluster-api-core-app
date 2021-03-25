@@ -6,7 +6,7 @@ metadata:
   creationTimestamp: null
   labels:
     {{- include "labels.common" . | nindent 4 }}
-  name: {{ include "resource.webhook.name" . }}
+  name: zzz-{{ include "resource.webhook.name" . }}
 webhooks:
 - clientConfig:
     caBundle: Cg==
