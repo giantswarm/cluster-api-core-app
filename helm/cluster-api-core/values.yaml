@@ -2,12 +2,10 @@ name: cluster-api-core
 
 images:
   controller:
-    registry: quay.io
     name: giantswarm/cluster-api-controller
-    tag: c39dc00632b621b18df7ec4ec0c73ec6bc6736ec
+    tag: 815685c3d03ac5ca7b6eed6c3a3e3aafd0b96ad9
   proxy:
-    registry: gcr.io
-    name: kubebuilder/kube-rbac-proxy
+    name: giantswarm/kube-rbac-proxy
     tag: v0.8.0
 
 crdConvertOnly: true

@@ -23,7 +23,7 @@ spec:
         - --secure-listen-address=0.0.0.0:{{ .Values.ports.proxy }}
         - --upstream=http://127.0.0.1:{{ .Values.ports.metrics }}/
         - --logtostderr=true
-        image: "{{ .Values.images.proxy.registry }}/{{ .Values.images.proxy.name }}:{{ .Values.images.proxy.tag }}"
+        image: "{{ .Values.Installation.V1.Registry.Domain }}/{{ .Values.images.proxy.name }}:{{ .Values.images.proxy.tag }}"
         imagePullPolicy: IfNotPresent
         name: kube-rbac-proxy
         ports:
@@ -38,7 +38,7 @@ spec:
         - --watch-filter={{ include "resource.app.version" . }}
         command:
         - /manager
-        image: "{{ .Values.images.controller.registry }}/{{ .Values.images.controller.name }}:{{ .Values.images.controller.tag }}"
+        image: "{{ .Values.Installation.V1.Registry.Domain }}/{{ .Values.images.controller.name }}:{{ .Values.images.controller.tag }}"
         livenessProbe:
           httpGet:
             path: /healthz
