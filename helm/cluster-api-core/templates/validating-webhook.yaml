@@ -21,7 +21,7 @@ webhooks:
   name: validation.cluster.cluster.x-k8s.io
   objectSelector:
     matchLabels:
-      cluster.x-k8s.io/watch-filter: {{ include "resource.app.version" . }}
+      cluster.x-k8s.io/watch-filter: {{ .Values.watchfilter }}
   rules:
   - apiGroups:
     - cluster.x-k8s.io

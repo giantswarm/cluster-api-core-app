@@ -23,3 +23,5 @@ ports:
 project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
+
+watchfilter: capi
