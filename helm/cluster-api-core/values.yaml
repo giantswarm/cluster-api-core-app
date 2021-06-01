@@ -4,9 +4,6 @@ images:
   controller:
     name: giantswarm/cluster-api-controller
     tag: bb90d2037f840c82ee2fd61a181699b94bbbb53e
-  proxy:
-    name: giantswarm/kube-rbac-proxy
-    tag: v0.8.0
 
 crdConvertOnly: true
 
@@ -15,7 +12,6 @@ featuregates:
   clusterresourceset: true
 
 ports:
-  proxy: 8443
   healthz: 9440
   metrics: 8080
   webhook: 9443

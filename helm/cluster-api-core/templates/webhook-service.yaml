@@ -3,6 +3,9 @@ kind: Service
 metadata:
   labels:
     {{- include "labels.common" . | nindent 4 }}
+  annotations:
+    giantswarm.io/monitoring: "true"
+    giantswarm.io/monitoring-port: "{{ .Values.ports.metrics }}"
   name: {{ include "resource.webhook.name" . }}
   namespace: {{ include "resource.default.namespace" . }}
 spec:
@@ -11,7 +14,8 @@ spec:
     port: {{ .Values.ports.webhook }}
     targetPort: webhook
   - name: metrics
-    port: {{ .Values.ports.proxy }}
+    port: {{ .Values.ports.metrics }}
     targetPort: metrics
   selector:
     {{- include "labels.selector" . | nindent 4 }}
+    control-plane: webhook
