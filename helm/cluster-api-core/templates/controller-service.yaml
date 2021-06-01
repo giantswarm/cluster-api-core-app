@@ -4,16 +4,18 @@ kind: Service
 metadata:
   annotations:
     prometheus.io/scrape: "true"
-  labels:
     giantswarm.io/monitoring: "true"
+    giantswarm.io/monitoring-port: "{{ .Values.ports.metrics }}"
+  labels:
     {{- include "labels.common" . | nindent 4 }}
   name: {{ include "resource.default.name" . }}
   namespace: {{ include "resource.default.namespace" . }}
 spec:
   ports:
-  - name: https
-    port: {{ .Values.ports.proxy }}
-    targetPort: https
+  - name: metrics
+    port: {{ .Values.ports.metrics }}
+    targetPort: metrics
   selector:
     {{- include "labels.selector" . | nindent 4 }}
+    control-plane: controller-manager
 {{ end }}
