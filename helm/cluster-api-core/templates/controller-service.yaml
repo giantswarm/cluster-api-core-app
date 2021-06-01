@@ -5,6 +5,7 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     giantswarm.io/monitoring: "true"
+    giantswarm.io/monitoring-port: "{{ .Values.ports.metrics }}"
   labels:
     {{- include "labels.common" . | nindent 4 }}
   name: {{ include "resource.default.name" . }}
