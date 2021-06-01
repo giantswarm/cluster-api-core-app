@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.14-gs3] - 2021-06-01
+
 ### Removed
 
 - Remove kube-rbac-proxy for the metrics endpoint.
@@ -32,7 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add initial app implementation.
 
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.14-gs2...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.14-gs3...HEAD
+[0.3.14-gs3]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.14-gs2...v0.3.14-gs3
 [0.3.14-gs2]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.14-gs1...v0.3.14-gs2
 [0.3.14-gs1]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.0.2...v0.3.14-gs1
 [0.0.2]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.0.1...v0.0.2
