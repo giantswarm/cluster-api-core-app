@@ -4,3 +4,5 @@ description: "Helm chart for cluster api core."
 home: "https://github.com/giantswarm/cluster-api-core-app"
 version: "[[ .Version ]]"
 appVersion: 0.3.19-gs1
+annotations:
+  application.giantswarm.io/team: "firecracker"
