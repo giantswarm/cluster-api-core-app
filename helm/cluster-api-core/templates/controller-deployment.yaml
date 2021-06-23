@@ -27,7 +27,7 @@ spec:
         - --watch-filter={{ .Values.watchfilter }}
         command:
         - /manager
-        image: "{{ .Values.registry.domain }}/{{ .Values.images.controller.name }}:{{ .Values.images.controller.tag }}"
+        image: "{{ .Values.registry.domain }}/{{ .Values.images.name }}:{{ .Values.images.tag }}"
         livenessProbe:
           httpGet:
             path: /healthz
