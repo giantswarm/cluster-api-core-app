@@ -22,12 +22,12 @@ spec:
     spec:
       containers:
       - args:
-        - --metrics-addr=0.0.0.0:{{ .Values.ports.metrics }}
+        - --metrics-bind-addr=0.0.0.0:{{ .Values.ports.metrics }}
         - --feature-gates=MachinePool={{ .Values.featuregates.machinepool }},ClusterResourceSet={{ .Values.featuregates.clusterresourceset }}
         - --watch-filter={{ .Values.watchfilter }}
         command:
         - /manager
-        image: "{{ .Values.Installation.V1.Registry.Domain }}/{{ .Values.images.controller.name }}:{{ .Values.images.controller.tag }}"
+        image: "{{ .Values.registry.domain }}/{{ .Values.images.name }}:{{ .Values.images.tag }}"
         livenessProbe:
           httpGet:
             path: /healthz
