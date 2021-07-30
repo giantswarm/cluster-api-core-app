@@ -1,18 +1,17 @@
-{{ if eq (include "resource.app.unique" .) "false" }}
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingWebhookConfiguration
 metadata:
   annotations:
-    cert-manager.io/inject-ca-from: {{ include "resource.default.namespace" . }}/{{ include "resource.webhook.name" . }}
+    cert-manager.io/inject-ca-from: {{ include "resource.default.namespace" . }}/{{ include "resource.default.name" . }}
   creationTimestamp: null
   labels:
     {{- include "labels.common" . | nindent 4 }}
-  name: {{ include "resource.webhook.name" . }}
+  name: {{ include "resource.default.name" . }}
 webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.webhook.name" . }}
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-cluster-x-k8s-io-v1alpha3-cluster
       port: {{ .Values.ports.webhook }}
@@ -36,7 +35,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.webhook.name" . }}
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-cluster-x-k8s-io-v1alpha3-machine
       port: {{ .Values.ports.webhook }}
@@ -60,7 +59,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.webhook.name" . }}
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-cluster-x-k8s-io-v1alpha3-machinedeployment
       port: {{ .Values.ports.webhook }}
@@ -84,7 +83,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.webhook.name" . }}
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-cluster-x-k8s-io-v1alpha3-machinehealthcheck
       port: {{ .Values.ports.webhook }}
@@ -108,7 +107,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.webhook.name" . }}
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-cluster-x-k8s-io-v1alpha3-machineset
       port: {{ .Values.ports.webhook }}
@@ -132,7 +131,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.webhook.name" . }}
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-exp-cluster-x-k8s-io-v1alpha3-machinepool
       port: {{ .Values.ports.webhook }}
@@ -156,7 +155,7 @@ webhooks:
 - clientConfig:
     caBundle: Cg==
     service:
-      name: {{ include "resource.webhook.name" . }}
+      name: {{ include "resource.default.name" . }}
       namespace: {{ include "resource.default.namespace" . }}
       path: /validate-addons-cluster-x-k8s-io-v1alpha3-clusterresourceset
       port: {{ .Values.ports.webhook }}
@@ -177,4 +176,3 @@ webhooks:
     resources:
     - clusterresourcesets
   sideEffects: None
-{{ end }}

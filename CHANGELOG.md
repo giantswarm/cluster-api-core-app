@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped `cluster-api` to version `v0.4.0`.
+- Removed dedicated container for the webhook.
+
 ## [0.3.22-gs1] - 2021-08-02
 
 ### Changed

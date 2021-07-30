@@ -26,14 +26,6 @@ room for such suffix.
 giantswarm
 {{- end -}}
 
-{{- define "resource.webhook.name" -}}
-{{- include "resource.default.name" . -}}-webhook
-{{- end -}}
-
 {{- define "resource.app.version" -}}
 {{- .Chart.AppVersion | quote -}}
-{{- end -}}
-
-{{- define "resource.app.unique" -}}
-{{- if hasSuffix "-unique" .Release.Name }}true{{ else }}false{{ end }}
 {{- end -}}

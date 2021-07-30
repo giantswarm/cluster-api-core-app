@@ -1,4 +1,3 @@
-{{ if eq (include "resource.app.unique" .) "false" }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -140,6 +139,19 @@ rules:
   - update
   - watch
 - apiGroups:
+  - cluster.x-k8s.io
+  resources:
+  - machinepools
+  - machinepools/status
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
   - ""
   resources:
   - configmaps
@@ -205,4 +217,3 @@ rules:
   - patch
   - update
   - watch
-{{ end }}

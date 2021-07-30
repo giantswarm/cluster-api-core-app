@@ -3,12 +3,12 @@ kind: ClusterRoleBinding
 metadata:
   labels:
     {{- include "labels.common" . | nindent 4 }}
-  name: {{ include "resource.webhook.name" . }}
+  name: {{ include "resource.default.name" . }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ include "resource.webhook.name" . }}
+  name: {{ include "resource.default.name" . }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "resource.webhook.name" . }}
+  name: {{ include "resource.default.name" . }}
   namespace: {{ include "resource.default.namespace" . }}

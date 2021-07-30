@@ -2,10 +2,13 @@ name: cluster-api-core
 
 images:
   controller:
-    name: giantswarm/cluster-api-controller
-    tag: v0.3.22-gs3
+    name: k8s-staging-cluster-api/cluster-api-controller
+    tag: nightly_master_20210803
 
-crdConvertOnly: true
+Installation:
+  V1:
+    Registry:
+      Domain: gcr.io
 
 featuregates:
   machinepool: true

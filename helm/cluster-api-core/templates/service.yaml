@@ -1,4 +1,3 @@
-{{ if eq (include "resource.app.unique" .) "false" }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -15,7 +14,9 @@ spec:
   - name: metrics
     port: {{ .Values.ports.metrics }}
     targetPort: metrics
+  - name: webhook
+    port: {{ .Values.ports.webhook }}
+    targetPort: webhook
   selector:
     {{- include "labels.selector" . | nindent 4 }}
     control-plane: controller-manager
-{{ end }}
