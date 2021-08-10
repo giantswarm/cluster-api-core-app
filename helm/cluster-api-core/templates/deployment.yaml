@@ -29,10 +29,9 @@ spec:
         - /manager
         image: "{{ .Values.Installation.V1.Registry.Domain }}/{{ .Values.images.controller.name }}:{{ .Values.images.controller.tag }}"
         livenessProbe:
-          httpGet:
-            path: /healthz
+          tcpSocket:
+            host: ""
             port: healthz
-            scheme: HTTP
         name: manager
         ports:
         - containerPort: {{ .Values.ports.healthz }}
@@ -49,10 +48,9 @@ spec:
             name: cert
             readOnly: true
         readinessProbe:
-          httpGet:
-            path: /readyz
+          tcpSocket:
+            host: ""
             port: healthz
-            scheme: HTTP
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
