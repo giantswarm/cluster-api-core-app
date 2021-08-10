@@ -27,7 +27,7 @@ spec:
         - --webhook-port={{ .Values.ports.webhook }}
         command:
         - /manager
-        image: "{{ .Values.Installation.V1.Registry.Domain }}/{{ .Values.images.controller.name }}:{{ .Values.images.controller.tag }}"
+        image: "{{ .Values.registry.domain }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
         livenessProbe:
           tcpSocket:
             host: ""
@@ -60,7 +60,7 @@ spec:
         - name: cert
           secret:
             defaultMode: 420
-            secretName: {{ include "resource.default.name" . }}
+            secretName: {{ include "resource.default.name" . }}-cert
       tolerations:
       - effect: NoSchedule
         key: node-role.kubernetes.io/master

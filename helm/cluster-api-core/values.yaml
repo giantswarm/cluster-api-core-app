@@ -1,14 +1,11 @@
 name: cluster-api-core
 
-images:
-  controller:
-    name: k8s-staging-cluster-api/cluster-api-controller
-    tag: nightly_master_20210803
+registry:
+  domain: quay.io
 
-Installation:
-  V1:
-    Registry:
-      Domain: gcr.io
+image:
+  name: giantswarm/cluster-api-controller
+  tag: v0.4.0
 
 featuregates:
   machinepool: true
