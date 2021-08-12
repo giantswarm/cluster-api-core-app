@@ -5,7 +5,7 @@ registry:
 
 image:
   name: giantswarm/cluster-api-controller
-  tag: fa3378e532147820227c7b7a887d9e7ab54fc2ff
+  tag: v0.4.0
 
 featuregates:
   machinepool: true
