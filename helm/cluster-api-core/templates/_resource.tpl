@@ -7,7 +7,7 @@ characters for resource names, the stem is truncated to 47 characters to leave
 room for such suffix.
 */}}
 {{- define "resource.default.name" -}}
-cluster-api-core
+cluster-api-core-unique
 {{- end -}}
 
 {{- define "resource.networkPolicy.name" -}}
