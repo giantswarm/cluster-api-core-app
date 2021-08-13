@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Don't publish app to the app collection.
+- Use giantswarm/config for config management.
 
 ## [0.3.22-gs1] - 2021-08-02
 
