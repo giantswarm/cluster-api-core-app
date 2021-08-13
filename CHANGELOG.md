@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.22-gs2] - 2021-08-13
+
 ### Changed
 
 - Don't publish app to the app collection.
@@ -50,7 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add initial app implementation.
 
 
-[Unreleased]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.22-gs1...HEAD
+[Unreleased]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.22-gs2...HEAD
+[0.3.22-gs2]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.22-gs1...v0.3.22-gs2
 [0.3.22-gs1]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.19-gs1...v0.3.22-gs1
 [0.3.19-gs1]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.14-gs3...v0.3.19-gs1
 [0.3.14-gs3]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.14-gs2...v0.3.14-gs3
