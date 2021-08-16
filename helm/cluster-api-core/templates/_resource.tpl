@@ -35,5 +35,5 @@ giantswarm
 {{- end -}}
 
 {{- define "resource.app.unique" -}}
-{{- if hasSuffix "-unique" .Release.Name }}true{{ else }}false{{ end }}
+{{- if eq $.Chart.Name $.Release.Name }}true{{ else }}false{{ end }}
 {{- end -}}
