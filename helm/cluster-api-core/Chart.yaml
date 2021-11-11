@@ -5,4 +5,4 @@ home: "https://github.com/giantswarm/cluster-api-core-app"
 version: "[[ .Version ]]"
 appVersion: 0.3.19-gs1
 annotations:
-  application.giantswarm.io/team: "firecracker"
+  application.giantswarm.io/team: "phoenix"
