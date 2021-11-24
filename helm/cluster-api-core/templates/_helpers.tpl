@@ -25,7 +25,7 @@ helm.sh/chart: {{ include "chart" . | quote }}
 Selector labels
 */}}
 {{- define "labels.selector" -}}
-app.kubernetes.io/name: {{ include "name" . | quote }}
+app.kubernetes.io/name: {{ if eq $.Chart.Name $.Release.Name }}cluster-api-core{{ else }}{{ include "resource.default.name" . }}-webhook{{ end }}
 app.kubernetes.io/instance: {{ .Release.Name | quote }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end -}}
