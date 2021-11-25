@@ -74,7 +74,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 [Unreleased]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.22-gs5-crd...HEAD
-[0.3.22-gs5-crd]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.22-gs5...v0.3.22-gs5-crd
 [0.3.22-gs5]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.22-gs4...v0.3.22-gs5
 [0.3.22-gs4]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.22-gs3...v0.3.22-gs4
 [0.3.22-gs3]: https://github.com/giantswarm/cluster-api-core-app/compare/v0.3.22-gs2...v0.3.22-gs3
